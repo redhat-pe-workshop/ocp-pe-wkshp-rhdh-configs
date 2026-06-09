@@ -1,0 +1,163 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: dynamic-plugins
+  namespace: rhdh
+data:
+  dynamic-plugins.yaml: |
+    includes:
+      - dynamic-plugins.default.yaml
+    plugins:
+      - package: ./dynamic-plugins/dist/red-hat-developer-hub-backstage-plugin-quickstart
+        disabled: true
+
+      - package: ./dynamic-plugins/dist/red-hat-developer-hub-backstage-plugin-bulk-import-backend-dynamic
+        disabled: false
+      - package: ./dynamic-plugins/dist/red-hat-developer-hub-backstage-plugin-bulk-import
+        disabled: false
+
+      - package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/backstage-plugin-mcp-actions-backend:bs_1.42.5__0.1.2!backstage-plugin-mcp-actions-backend
+        disabled: false
+      - package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/red-hat-developer-hub-backstage-plugin-software-catalog-mcp-tool:bs_1.42.5__0.2.3!red-hat-developer-hub-backstage-plugin-software-catalog-mcp-tool
+        disabled: false
+      - package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/red-hat-developer-hub-backstage-plugin-techdocs-mcp-tool:bs_1.42.5__0.3.0!red-hat-developer-hub-backstage-plugin-techdocs-mcp-tool
+        disabled: false
+
+      - package: ./dynamic-plugins/dist/backstage-plugin-scaffolder-backend-module-gitlab-dynamic
+        disabled: false
+      - package: ./dynamic-plugins/dist/roadiehq-scaffolder-backend-argocd-dynamic
+        disabled: false
+      - package: ./dynamic-plugins/dist/backstage-plugin-kubernetes-backend-dynamic
+        disabled: false
+      - package: ./dynamic-plugins/dist/backstage-plugin-kubernetes
+        disabled: false
+      - package: ./dynamic-plugins/dist/backstage-community-plugin-topology
+        disabled: false
+      - package: ./dynamic-plugins/dist/backstage-community-plugin-tekton
+        disabled: false
+      - package: ./dynamic-plugins/dist/backstage-community-plugin-catalog-backend-module-keycloak-dynamic
+        disabled: false
+      - package: ./dynamic-plugins/dist/roadiehq-backstage-plugin-argo-cd-backend-dynamic
+        disabled: false
+      - package: ./dynamic-plugins/dist/backstage-community-plugin-redhat-argocd
+        disabled: false
+      - package: ./dynamic-plugins/dist/backstage-plugin-catalog-backend-module-gitlab-dynamic
+        disabled: false
+
+      - disabled: false
+        package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/red-hat-developer-hub-backstage-plugin-lightspeed:bs_1.42.5__1.0.3!red-hat-developer-hub-backstage-plugin-lightspeed
+        pluginConfig:
+          dynamicPlugins:
+            frontend:
+              red-hat-developer-hub.backstage-plugin-lightspeed:
+                appIcons:
+                  - name: LightspeedIcon
+                    module: LightspeedPlugin
+                    importName: LightspeedIcon
+                dynamicRoutes:
+                  - importName: LightspeedPage
+                    menuItem:
+                      icon: LightspeedIcon
+                      text: Lightspeed
+                    module: LightspeedPlugin
+                    path: /lightspeed
+                translationResources:
+                  - importName: lightspeedTranslations
+                    module: Alpha
+                    ref: lightspeedTranslationRef
+      - disabled: false
+        package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/red-hat-developer-hub-backstage-plugin-lightspeed-backend:bs_1.42.5__1.0.3!red-hat-developer-hub-backstage-plugin-lightspeed-backend
+
+      - disabled: false
+        package: ./dynamic-plugins/dist/red-hat-developer-hub-backstage-plugin-global-header
+        pluginConfig:
+          app:
+            sidebar:
+              search: false
+              settings: false
+          dynamicPlugins:
+            frontend:
+              default.main-menu-items:
+                menuItems:
+                  default.create:
+                    title: ''
+              red-hat-developer-hub.backstage-plugin-global-header:
+                mountPoints:
+                  - mountPoint: application/header
+                    importName: GlobalHeader
+                    config:
+                      position: above-main-content
+                  - mountPoint: global.header/component
+                    importName: SearchComponent
+                    config:
+                      priority: 100
+                  - mountPoint: global.header/component
+                    importName: Spacer
+                    config:
+                      priority: 99
+                      props:
+                        growFactor: 0
+                  - mountPoint: global.header/component
+                    importName: HeaderIconButton
+                    config:
+                      priority: 90
+                      props:
+                        title: Self-service
+                        icon: add
+                        to: create
+                  - mountPoint: global.header/component
+                    importName: StarredDropdown
+                    config:
+                      priority: 85
+                  - mountPoint: global.header/component
+                    importName: ApplicationLauncherDropdown
+                    config:
+                      priority: 82
+                  - mountPoint: global.header/component
+                    importName: SupportButton
+                    config:
+                      priority: 80
+                  - mountPoint: global.header/component
+                    importName: Divider
+                    config:
+                      priority: 50
+                  - mountPoint: global.header/component
+                    importName: ProfileDropdown
+                    config:
+                      priority: 10
+                  - mountPoint: global.header/profile
+                    importName: MenuItemLink
+                    config:
+                      priority: 100
+                      props:
+                        title: Settings
+                        link: /settings
+                        icon: manageAccounts
+                  - mountPoint: global.header/profile
+                    importName: LogoutButton
+                    config:
+                      priority: 10
+                  - mountPoint: global.header/application-launcher
+                    importName: MenuItemLink
+                    config:
+                      section: Developer Tools
+                      priority: 90
+                      props:
+                        title: DevSpaces
+                        link: https://devspaces.{{ cluster_subdomain }}
+                  - mountPoint: global.header/application-launcher
+                    importName: MenuItemLink
+                    config:
+                      section: Developer Tools
+                      priority: 80
+                      props:
+                        title: GitLab
+                        link: https://gitlab-gitlab.{{ cluster_subdomain }}
+                  - mountPoint: global.header/application-launcher
+                    importName: MenuItemLink
+                    config:
+                      section: Developer Tools
+                      priority: 80
+                      props:
+                        title: Quay
+                        link: https://quay.{{ cluster_subdomain }}

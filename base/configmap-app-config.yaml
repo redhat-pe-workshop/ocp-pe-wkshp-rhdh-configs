@@ -1,0 +1,20 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: app-config-rhdh
+  namespace: rhdh
+  labels:
+    app.kubernetes.io/name: backstage
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+data:
+  app-config-rhdh.yaml: |
+    app:
+      title: Red Hat Developer Hub
+      baseUrl: https://backstage-developer-hub-rhdh.{{ cluster_subdomain }}
+
+    backend:
+      baseUrl: https://backstage-developer-hub-rhdh.{{ cluster_subdomain }}
+      listen:
+        port: 7007
+        host: 0.0.0.0

@@ -1,0 +1,27 @@
+apiVersion: rhdh.redhat.com/v1alpha3
+kind: Backstage
+metadata:
+  name: developer-hub
+  namespace: rhdh
+spec:
+  application:
+    extraEnvs:
+      envs:
+        - name: NODE_TLS_REJECT_UNAUTHORIZED
+          value: "0"
+      secrets:
+        - name: gitlab-token
+        - name: argocd-password
+        - name: kubernetes-sa-token
+        - name: oauth-client
+        - name: backend-secret
+  deployment:
+    patch:
+      spec:
+        template:
+          spec:
+            volumes:
+              - $patch: replace
+                name: dynamic-plugins-root
+                persistentVolumeClaim:
+                  claimName: dynamic-plugins-root
