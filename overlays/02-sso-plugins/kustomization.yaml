@@ -8,7 +8,6 @@ resources:
   - es-gitlab-token.yaml
   - es-kubernetes-sa-token.yaml
   - es-oauth-client.yaml
-  - pvc-dynamic-plugins.yaml
   - secret-backstage-npmrc.yaml
 
 patches:

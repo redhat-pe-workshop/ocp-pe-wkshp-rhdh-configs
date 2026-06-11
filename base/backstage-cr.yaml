@@ -14,8 +14,17 @@ spec:
     dynamicPluginsConfigMapName: dynamic-plugins
     extraFiles:
       mountPath: /opt/app-root/src
-    replicas: 1
     route:
       enabled: true
+  deployment:
+    patch:
+      spec:
+        template:
+          spec:
+            volumes:
+              - $patch: replace
+                name: dynamic-plugins-root
+                persistentVolumeClaim:
+                  claimName: dynamic-plugins-root
   database:
     enableLocalDb: true

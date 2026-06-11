@@ -5,3 +5,4 @@ resources:
   - backstage-cr.yaml
   - configmap-app-config.yaml
   - configmap-dynamic-plugins.yaml
+  - pvc-dynamic-plugins.yaml
