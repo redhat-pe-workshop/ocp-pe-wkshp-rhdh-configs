@@ -3,10 +3,10 @@ kind: Kustomization
 
 resources:
   - ../04-templates
+  - configmap-app-config-lightspeed.yaml
   - configmap-lightspeed-stack.yaml
   - es-lightspeed-llama-stack-secrets.yaml
 
 patches:
   - path: patches/backstage-cr.yaml
-  - path: patches/app-config.yaml
   - path: patches/dynamic-plugins.yaml

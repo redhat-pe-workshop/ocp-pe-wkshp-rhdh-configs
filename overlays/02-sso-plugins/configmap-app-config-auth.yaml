@@ -1,14 +1,14 @@
-apiVersion: v1
 kind: ConfigMap
+apiVersion: v1
 metadata:
-  name: app-config-rhdh
+  name: app-config-auth
   namespace: rhdh
+  labels:
+    app.kubernetes.io/name: backstage
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
 data:
-  app-config-rhdh.yaml: |
-    app:
-      title: Red Hat Developer Hub
-      baseUrl: https://backstage-developer-hub-rhdh.{{ cluster_subdomain }}
-
+  app-config-auth.yaml: |
     signInPage: oidc
     auth:
       session:
@@ -26,10 +26,6 @@ data:
                 - resolver: preferredUsernameMatchingUserEntityName
 
     backend:
-      baseUrl: https://backstage-developer-hub-rhdh.{{ cluster_subdomain }}
-      listen:
-        port: 7007
-        host: 0.0.0.0
       auth:
         externalAccess:
           - type: static
@@ -47,19 +43,6 @@ data:
     catalog:
       rules:
         - allow: [Component, System, API, Resource, Location, Template, Domain]
-      locations:
-        - type: url
-          target: https://gitlab-gitlab.{{ cluster_subdomain }}/parasol/parasol-store/blob/main/catalog-info.yaml
-          rules:
-            - allow: [Component, System, API, Resource, Location, Domain]
-        - type: url
-          target: https://gitlab-gitlab.{{ cluster_subdomain }}/parasol/parasol-store-api/blob/main/catalog-info.yaml
-          rules:
-            - allow: [Component, System, API, Resource, Location, Domain]
-        - type: url
-          target: https://gitlab-gitlab.{{ cluster_subdomain }}/parasol/software-templates/blob/main/catalog-info.yaml
-          rules:
-            - allow: [Template]
       providers:
         keycloakOrg:
           default:

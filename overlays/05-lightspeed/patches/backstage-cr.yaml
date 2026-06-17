@@ -5,6 +5,12 @@ metadata:
   namespace: rhdh
 spec:
   application:
+    appConfig:
+      configMaps:
+        - name: app-config-rhdh
+        - name: app-config-auth
+        - name: app-config-catalog
+        - name: app-config-lightspeed
     extraEnvs:
       envs:
         - name: NODE_TLS_REJECT_UNAUTHORIZED

@@ -7,16 +7,21 @@ metadata:
     app.kubernetes.io/name: backstage
 spec:
   application:
+    # Instructs the operator to mount the app-config-rhdh ConfigMap into
+    # the Backstage container at /opt/app-root/src/app-config-rhdh.yaml
     appConfig:
       mountPath: /opt/app-root/src
       configMaps:
         - name: app-config-rhdh
+    # Instructs the operator to use the dynamic-plugins ConfigMap to configure the Backstage plugins
     dynamicPluginsConfigMapName: dynamic-plugins
     extraFiles:
       mountPath: /opt/app-root/src
     route:
       enabled: true
   deployment:
+    # Instructs the operator to mount a PersistentVolumeClaim to cache dynamically
+    # installed Backstage plugins to speed up subsequent deployments
     patch:
       spec:
         template:

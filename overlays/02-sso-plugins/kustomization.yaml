@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
   - ../../base
+  - configmap-app-config-auth.yaml
   - es-argocd-password.yaml
   - es-backend-secret.yaml
   - es-gitlab-token.yaml
@@ -12,5 +13,4 @@ resources:
 
 patches:
   - path: patches/backstage-cr.yaml
-  - path: patches/app-config.yaml
   - path: patches/dynamic-plugins.yaml

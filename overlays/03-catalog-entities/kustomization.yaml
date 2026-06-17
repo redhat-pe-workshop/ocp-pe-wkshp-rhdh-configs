@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
   - ../02-sso-plugins
+  - configmap-app-config-catalog.yaml
 
 patches:
-  - path: patches/app-config.yaml
+  - path: patches/backstage-cr.yaml

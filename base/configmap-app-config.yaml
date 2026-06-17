@@ -8,6 +8,8 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
 data:
+  # This is a standard Backstage configuration file. It's used to configure the
+  # core Backstage application and pass additional plugin configuration.
   app-config-rhdh.yaml: |
     app:
       title: Red Hat Developer Hub
@@ -18,3 +20,11 @@ data:
       listen:
         port: 7007
         host: 0.0.0.0
+
+    # This is a development and testing authentication configuration. You'll
+    # replace this with a production-ready SSO provider in subsequent modules
+    auth:
+      environment: development
+      providers:
+        guest:
+          dangerouslyAllowOutsideDevelopment: true

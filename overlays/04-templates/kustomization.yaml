@@ -6,4 +6,4 @@ resources:
   - configmap-rbac-policy.yaml
 
 patches:
-  - path: patches/app-config.yaml
+  - path: configmap-app-config-catalog.yaml
