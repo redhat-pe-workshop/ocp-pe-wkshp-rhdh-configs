@@ -24,6 +24,8 @@ spec:
     # installed Backstage plugins to speed up subsequent deployments
     patch:
       spec:
+        strategy:
+          type: Recreate
         template:
           spec:
             volumes:
