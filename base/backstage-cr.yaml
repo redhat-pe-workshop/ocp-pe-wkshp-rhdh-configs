@@ -22,6 +22,10 @@ spec:
   deployment:
     # Instructs the operator to mount a PersistentVolumeClaim to cache dynamically
     # installed Backstage plugins to speed up subsequent deployments
+    # The dynamic-plugins-root PVC uses ReadWriteOnce. The main container
+    # reads plugin bundles from this volume at runtime, so it stays mounted
+    # for the pod's lifetime. Recreate avoids multi-attach errors during
+    # rollouts since RWO only allows one pod to mount the PVC at a time.
     patch:
       spec:
         strategy:
