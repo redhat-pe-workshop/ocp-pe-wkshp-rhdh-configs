@@ -16,4 +16,4 @@ Attendees advance through stages by updating their Argo CD Application's `spec.s
 
 ## Cluster values
 
-Files use `{{ cluster_subdomain }}` and `{{ kubernetes_api_url }}` Jinja2 placeholders, substituted by the provisioning automation at deploy time.
+Files use `{{ cluster_subdomain }}` and `{{ kubernetes_api_url }}` Jinja2 placeholders, substituted by the provisioning automation at deploy time. These could be injected in production environments using patches, Helm, etc.
