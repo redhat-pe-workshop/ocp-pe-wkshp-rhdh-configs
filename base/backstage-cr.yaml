@@ -33,6 +33,13 @@ spec:
           type: Recreate
         template:
           spec:
+            containers:
+              - name: backstage-backend
+                resources:
+                  requests:
+                    ephemeral-storage: 1Gi
+                  limits:
+                    ephemeral-storage: 2Gi
             volumes:
               - $patch: replace
                 name: dynamic-plugins-root
