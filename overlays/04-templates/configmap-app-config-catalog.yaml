@@ -20,6 +20,6 @@ data:
           rules:
             - allow: [Component, System, API, Resource, Location, Domain]
         - type: url
-          target: https://gitlab-gitlab.{{ cluster_subdomain }}/rhdh/rhdh-template-developer-self-service/blob/main/catalog-info.yaml
+          target: https://gitlab-gitlab.{{ cluster_subdomain }}/rhdh/rhdh-template-developer-self-service/blob/main/location.yaml
           rules:
             - allow: [Template]
