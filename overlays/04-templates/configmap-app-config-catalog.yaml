@@ -12,6 +12,10 @@ data:
     catalog:
       locations:
         - type: url
+          target: https://gitlab-gitlab.{{ cluster_subdomain }}/parasol/parasol-entities/blob/main/catalog-index.yaml
+          rules:
+            - allow: [Component, System, API, Resource, Location, Domain, Group]
+        - type: url
           target: https://gitlab-gitlab.{{ cluster_subdomain }}/parasol/parasol-store/blob/main/catalog-info.yaml
           rules:
             - allow: [Component, System, API, Resource, Location, Domain]

@@ -11,6 +11,8 @@ spec:
         - name: app-config-auth
     extraEnvs:
       envs:
+        # For illustrative purposes only! We're disabling TLS verification
+        # to avoid issues with self-signed certificates used in this lab 
         - name: NODE_TLS_REJECT_UNAUTHORIZED
           value: "0"
       secrets:
