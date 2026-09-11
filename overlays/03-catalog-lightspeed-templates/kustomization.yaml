@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ../02-sso-plugins
+  - configmap-app-config-catalog.yaml
+  - configmap-rbac-policy.yaml
+  - configmap-app-config-lightspeed.yaml
+  - configmap-lightspeed-stack.yaml
+  - es-lightspeed-llama-stack-secrets.yaml
+
+patches:
+  - path: patches/backstage-cr.yaml
+  - path: patches/dynamic-plugins.yaml
