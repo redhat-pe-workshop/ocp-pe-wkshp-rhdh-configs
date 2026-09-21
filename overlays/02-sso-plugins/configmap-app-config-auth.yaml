@@ -74,9 +74,13 @@ data:
         - type: config
           instances:
             - name: main
+              url: https://openshift-gitops-server-openshift-gitops.{{ cluster_subdomain }}
+              username: admin
+              password: ${ARGOCD_OPENSHIFT_GITOPS_PASSWORD}
+            - name: apps
               url: https://rhdh-gitops-server-rhdh-gitops.{{ cluster_subdomain }}
               username: admin
-              password: ${ARGOCD_PASSWORD}
+              password: ${ARGOCD_RHDH_GITOPS_PASSWORD}
 
     jira:
       proxyPath: /jira/api
