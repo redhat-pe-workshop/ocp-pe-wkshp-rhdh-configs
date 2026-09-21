@@ -32,6 +32,10 @@ data:
             options:
               token: ${BACKEND_SECRET}
               subject: api-access
+          - type: static
+            options:
+              token: ${MCP_SECRET}
+              subject: mcp-clients
 
     integrations:
       gitlab:
