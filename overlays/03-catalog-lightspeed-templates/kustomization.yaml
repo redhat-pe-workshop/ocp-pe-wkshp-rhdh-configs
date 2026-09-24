@@ -8,7 +8,6 @@ resources:
   - configmap-app-config-lightspeed.yaml
   - configmap-lightspeed-stack.yaml
   - es-lightspeed-llama-stack-secrets.yaml
-  - es-mcp-secret.yaml
 
 patches:
   - path: patches/backstage-cr.yaml

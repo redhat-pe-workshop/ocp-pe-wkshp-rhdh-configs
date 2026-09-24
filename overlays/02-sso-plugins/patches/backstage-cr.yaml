@@ -21,3 +21,4 @@ spec:
         - name: kubernetes-sa-token
         - name: oauth-client
         - name: backend-secret
+        - name: mcp-secret

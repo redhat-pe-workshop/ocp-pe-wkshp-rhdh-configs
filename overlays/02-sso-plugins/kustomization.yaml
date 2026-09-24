@@ -8,6 +8,7 @@ resources:
   - es-backend-secret.yaml
   - es-gitlab-token.yaml
   - es-kubernetes-sa-token.yaml
+  - es-mcp-secret.yaml
   - es-oauth-client.yaml
   - secret-backstage-npmrc.yaml
 
