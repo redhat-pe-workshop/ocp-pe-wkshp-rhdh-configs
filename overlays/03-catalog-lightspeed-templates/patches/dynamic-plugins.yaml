@@ -149,10 +149,11 @@ data:
           dynamicPlugins:
             frontend:
               red-hat-developer-hub.backstage-plugin-lightspeed:
-                translationResources:
-                  - importName: lightspeedTranslations
-                    module: Alpha
-                    ref: lightspeedTranslationRef
+                # TODO: Breaks lightspeed in latest release. Why?
+                # translationResources:
+                #   - importName: lightspeedTranslations
+                #     module: Alpha
+                #     ref: lightspeedTranslationRef
                 dynamicRoutes:
                   - path: /lightspeed
                     importName: LightspeedPage
