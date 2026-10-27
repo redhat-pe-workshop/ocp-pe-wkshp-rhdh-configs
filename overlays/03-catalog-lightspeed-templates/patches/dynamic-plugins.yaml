@@ -143,7 +143,7 @@ data:
         disabled: false
 
       # Lightspeed plugins
-      - package: 'oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/red-hat-developer-hub-backstage-plugin-lightspeed:bs_1.49.4__2.8.8'
+      - package: 'oci://registry.access.redhat.com/rhdh/red-hat-developer-hub-backstage-plugin-lightspeed:{{inherit}}'
         disabled: false
         pluginConfig:
           dynamicPlugins:
@@ -171,7 +171,7 @@ data:
                     config:
                       id: lightspeed
                       priority: 100
-      - package: 'oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/red-hat-developer-hub-backstage-plugin-lightspeed-backend:bs_1.49.4__2.8.8'
+      - package: 'oci://registry.access.redhat.com/rhdh/red-hat-developer-hub-backstage-plugin-lightspeed-backend:{{inherit}}'
         disabled: false
 
       - disabled: false
