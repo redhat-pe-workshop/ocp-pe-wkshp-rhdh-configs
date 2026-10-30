@@ -43,9 +43,9 @@ data:
 
         Prefer **live data from this RHDH instance** via MCP before guessing:
 
-        * **fetch-catalog-entities** — List or look up catalog entities (components, APIs, systems, resources, etc.).
+        * **query-catalog-entities** — List or look up catalog entities (components, APIs, systems, resources, etc.).
         * **knowledge_search** — Knowledge search in the catalog.
-        * **software-template-metadata-tool** — Metadata for Software Templates available in this hub.
+        * **query-catalog-entities** — Also use this to find Template entities and their metadata.
         * **fetch-techdocs**, **retrieve-techdocs-content**, **analyze-techdocs-coverage** — Search, analyze documentation coverage, and read TechDocs tied to entities in this instance.
 
         Call these tools **early** when the question involves "what we have in the catalog," a named component/API,
@@ -85,3 +85,13 @@ data:
           - "'self'"
           - "'unsafe-eval'"
           - https://cdn.jsdelivr.net
+
+    # GPTEINFRA-18405: Bedrock-compatible names without duplicate catalog actions.
+    mcpActions:
+      namespacedToolNames: false
+      servers:
+        bedrock:
+          name: backstage-bedrock
+          filter:
+            exclude:
+              - id: catalog:query-catalog-entities
